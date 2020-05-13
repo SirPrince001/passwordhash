@@ -16,6 +16,7 @@ userRoute.route('/register-user').post(async(req,res) =>{
         console.log(userName)
 
         password = bcrypt.hashSync(req.body.password , 10)
+
         let newUser = new userSchema({userName:userName ,password:password})
 
         let result = await newUser.save()
@@ -23,6 +24,7 @@ userRoute.route('/register-user').post(async(req,res) =>{
         res.send(result)
 
     }catch(error){
+        
         res.send(error)
     }
 

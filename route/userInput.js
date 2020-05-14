@@ -57,7 +57,7 @@ userRoute.route('/login-user').post(async(req,res) => {
 userRoute.route('/get-user').get(async(req,res) => {
     try{
 
-        let displayResult = await userSchema.find().exec()
+        let displayResult = await userSchema.find()
         res.send(displayResult)
  
     }catch(error) {

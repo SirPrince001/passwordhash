@@ -1,5 +1,5 @@
 const express = require('express')
-const bodyParser = require('body-parser')
+
 const bcrypt = require('bcryptjs')
 
 const userRoute = express.Router()
@@ -24,7 +24,7 @@ userRoute.route('/register-user').post(async(req,res) =>{
         res.send(result)
 
     }catch(error){
-        
+
         res.send(error)
     }
 
@@ -41,11 +41,14 @@ userRoute.route('/login-user').post(async(req,res) => {
         }
 
         if(!bcrypt.compareSync(req.body.password , user.password)){
+
             return  res.status(400).send({message : 'The password is invalid'})
         }
 
         res.send({message:'The Username and password combination is coreect!!'})
+
     } catch(error){
+
         res.send(error)
     }
 })
